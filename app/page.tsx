@@ -3,58 +3,31 @@
 import { useGithubStore } from "@/store/useGithubStore";
 import { Sidebar } from "@/components/sidebar";
 import Image from "next/image";
+import { User } from "@/components/user";
 
 export default function Home() {
-  const { users, selectedUser, selectUser } = useGithubStore();
-
-  console.log(selectedUser);
+  const { users, selectedUser, selectUser, repos } = useGithubStore();
 
   return (
     <div className="font-sans min-h-screen bg-[#0D1117]">
       <div className="grid grid-cols-[350px_1fr] min-h-[inherit]">
-        {/* Columna izquierda - Perfil estático / seleccionado */}
         <Sidebar />
 
-        {/* Columna derecha */}
         <div className="flex flex-col gap-6 px-[2vw] pt-10">
-          {/* Título */}
           <h3 className="text-xl text-light">
             {selectedUser ? selectedUser.login : "GitHub Users"}
           </h3>
 
-          {/* Contenido */}
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {selectedUser ? (
-              // Detalle del usuario seleccionado
-              <div className="border border-blue-highlight-light rounded-lg p-4 text-center bg-blue-highlight col-span-full">
-                <Image
-                  src={selectedUser.avatar_url || "/avatar-default.jpg"}
-                  alt={selectedUser.login}
-                  width={300}
-                  height={300}
-                  className="w-[300px] h-[300px] rounded-full mx-auto mb-3"
-                  unoptimized
-                />
-                <h3 className="font-semibold text-light text-2xl">
-                  {selectedUser.login}
-                </h3>
-                {selectedUser.name && (
-                  <p className="text-default">{selectedUser.name}</p>
-                )}
-                {selectedUser.bio && (
-                  <p className="text-default">{selectedUser.bio}</p>
-                )}
-                <p className="text-default mt-2">
-                  Followers: {selectedUser.followers} | Following:{" "}
-                  {selectedUser.following}
-                </p>
-              </div>
+              <>
+                <User {...selectedUser} repos={repos} />
+              </>
             ) : users.length === 0 ? (
               <p className="text-default">
                 No users found. Try searching above.
               </p>
             ) : (
-              // Lista de usuarios
               users.map((user) => (
                 <div
                   key={user.id}
