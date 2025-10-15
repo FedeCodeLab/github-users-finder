@@ -4,10 +4,12 @@ import { useGithubStore } from "@/store/useGithubStore";
 import { Sidebar } from "@/components/sidebar";
 import Image from "next/image";
 import { User } from "@/components/user";
+import Link from "next/link";
 
 export default function Home() {
   const { users, selectedUser, selectUser, repos } = useGithubStore();
 
+  console.log("users: ", users);
   return (
     <div className="font-sans min-h-screen bg-[#0D1117]">
       <div className="grid grid-cols-[350px_1fr] min-h-[inherit]">
@@ -18,7 +20,7 @@ export default function Home() {
             {selectedUser ? selectedUser.login : "GitHub Users"}
           </h3>
 
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10">
             {selectedUser ? (
               <>
                 <User {...selectedUser} repos={repos} />
@@ -31,8 +33,7 @@ export default function Home() {
               users.map((user) => (
                 <div
                   key={user.id}
-                  className="border border-blue-highlight-light rounded-lg p-4 text-center bg-blue-highlight cursor-pointer"
-                  onClick={() => selectUser(user.login)}
+                  className="border border-blue-highlight-light rounded-lg p-4 text-center bg-blue-highlight"
                 >
                   <Image
                     src={user.avatar_url || "/avatar-default.jpg"}
@@ -43,12 +44,21 @@ export default function Home() {
                     unoptimized
                   />
                   <h3 className="font-semibold text-light">{user.login}</h3>
-                  <button
-                    className="text-blue-400 text-sm mt-2 inline-block"
+
+                  <p
                     onClick={() => selectUser(user.login)}
+                    className="w-full border-2 cursor-pointer border-blue-highlight-light hover:bg-blue-highlight-light text-sm mt-2 inline-block px-4 py-2 rounded-[10px]"
                   >
                     View Profile
-                  </button>
+                  </p>
+
+                  <Link
+                    href={user.html_url}
+                    target="_blank"
+                    className="w-full bg-[#0A66C2] hover:bg-[#0a5caf] text-sm mt-2 inline-block px-4 py-2 rounded-[10px]"
+                  >
+                    View Profile on Github
+                  </Link>
                 </div>
               ))
             )}
