@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className="flex flex-col gap-6 px-[2vw] pt-10">
           <h3 className="text-xl text-light">
-            {selectedUser ? selectedUser.login : "GitHub Users"}
+            {selectedUser ? "" : "GitHub Users"}
           </h3>
 
           <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10">
