@@ -10,11 +10,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ! --------- tokens de colores --------- */
+
+  --color-neutral: #ffffff;
+  --color-light: #d1d7e0;
+  --color-default: #9198a1;
+
+  --color-blue-highlight-light: #3D444D;
+  --color-blue-highlight: #212830;
+  --color-blue-highlight-dark: #151B23;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #151B23;
     --foreground: #ededed;
   }
 }
