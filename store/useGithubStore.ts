@@ -9,6 +9,7 @@ interface GithubUser {
 
 interface GithubStore {
   query: string;
+  lastQuery: string;
   users: GithubUser[];
   setQuery: (value: string) => void;
   fetchUsers: () => Promise<void>;
@@ -16,6 +17,7 @@ interface GithubStore {
 
 export const useGithubStore = create<GithubStore>((set, get) => ({
   query: "",
+  lastQuery: "",
   users: [],
 
   setQuery: (value) => set({ query: value }),
@@ -29,7 +31,7 @@ export const useGithubStore = create<GithubStore>((set, get) => ({
         `https://api.github.com/search/users?q=${query}&per_page=12`
       );
       const data = await res.json();
-      set({ users: data.items || [] });
+      set({ users: data.items || [], lastQuery: query });
     } catch (err) {
       console.error("Error fetching users:", err);
     }
