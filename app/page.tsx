@@ -4,24 +4,27 @@ import { useGithubStore } from "@/store/useGithubStore";
 import Image from "next/image";
 
 export default function Home() {
-  const { users, lastQuery, selectedUser, selectUser } = useGithubStore();
-  console.log("usuario seleccionado: ", selectedUser);
+  const { users, selectedUser, selectUser } = useGithubStore();
+
+  console.log(selectedUser);
+
   return (
     <div className="font-sans min-h-screen bg-[#0D1117]">
       <div className="grid grid-cols-[350px_1fr] min-h-[inherit]">
-        {/* Columna izquierda - Perfil estático */}
+        {/* Columna izquierda - Perfil estático / seleccionado */}
         <div className="px-[2vw] pt-10 bg-blue-highlight border-r border-r-blue-highlight-light flex flex-col gap-6">
           <Image
-            src="/avatar-default.jpg"
+            src={selectedUser?.avatar_url || "/avatar-default.jpg"}
             width={350}
             height={350}
             alt="avatar"
             className="rounded-full mx-auto"
+            unoptimized
           />
           <div className="flex flex-col gap-4">
             <div>
               <h4 className="text-[24px] font-semibold text-light leading-6">
-                Jon Snow
+                {selectedUser ? selectedUser.login : "Jon Snow"}
               </h4>
               <h5 className="text-[20px] font-light text-default">
                 LordCommander.Dev · he/him
@@ -29,9 +32,9 @@ export default function Home() {
             </div>
             <div>
               <p className="text-[15px] text-light">
-                Fullstack Developer | Building scalable solutions beyond the
-                Wall. Passionate about clean code, strong typing, and protecting
-                the realm of production.
+                {selectedUser
+                  ? selectedUser.bio
+                  : "Fullstack Developer | Building scalable solutions beyond the Wall. Passionate about clean code, strong typing, and protecting the realm of production."}
               </p>
             </div>
           </div>
@@ -41,11 +44,7 @@ export default function Home() {
         <div className="flex flex-col gap-6 px-[2vw] pt-10">
           {/* Título */}
           <h3 className="text-xl text-light">
-            {selectedUser
-              ? selectedUser.login
-              : users.length === 0
-              ? "GitHub Users"
-              : `Resultados de: ${lastQuery}`}
+            {selectedUser ? selectedUser.login : "GitHub Users"}
           </h3>
 
           {/* Contenido */}
@@ -74,7 +73,6 @@ export default function Home() {
                   Followers: {selectedUser.followers} | Following:{" "}
                   {selectedUser.following}
                 </p>
-                <p className="text-default mt-2">{selectedUser.bio}</p>
               </div>
             ) : users.length === 0 ? (
               <p className="text-default">
