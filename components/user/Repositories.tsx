@@ -15,10 +15,10 @@ interface RepositoriesProps {
 
 export const Repositories = ({ repos }: RepositoriesProps) => {
   return (
-    <div className="col-span-full mt-6 flex flex-col gap-4">
+    <div className="col-span-full mt-6 mb-10 flex flex-col gap-4">
       <h4 className="text-light text-lg font-semibold mb-2">Repositories:</h4>
       {repos.length > 0 ? (
-        <ul className="grid gap-3 md:grid-cols-2">
+        <ul className="grid gap-3 grid-cols-1 md:grid-cols-2">
           {repos.map((repo) => (
             <Link href={repo.html_url} key={repo.id} target="_blank">
               <li className="border border-blue-highlight-light hover:bg-blue-highlight rounded-lg p-6  flex flex-col gap-4">
