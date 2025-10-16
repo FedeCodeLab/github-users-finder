@@ -113,18 +113,6 @@ npm run lint     # Ejecuta el linter
 
 ---
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor, abrí un issue primero para discutir qué te gustaría cambiar.
-
-1. Fork el proyecto
-2. Creá tu Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la Branch (`git push origin feature/AmazingFeature`)
-5. Abrí un Pull Request
-
----
-
 ## 🧑‍💻 Autor
 
 **Federico Guzmán**  
