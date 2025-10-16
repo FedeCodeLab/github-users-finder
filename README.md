@@ -119,18 +119,6 @@ npm run lint     # Ejecuta el linter
 
 ---
 
-## 🚧 Próximas mejoras
-
-- [ ] Agregar paginación para más resultados
-- [ ] Implementar manejo de errores mejorado
-- [ ] Agregar estados de loading
-- [ ] Implementar debounce en la búsqueda
-- [ ] Agregar filtros adicionales
-- [ ] Modo claro/oscuro
-- [ ] Internacionalización (i18n)
-
----
-
 ## 🤝 Contribuciones
 
 Las contribuciones son bienvenidas. Por favor, abrí un issue primero para discutir qué te gustaría cambiar.
@@ -140,12 +128,6 @@ Las contribuciones son bienvenidas. Por favor, abrí un issue primero para discu
 3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la Branch (`git push origin feature/AmazingFeature`)
 5. Abrí un Pull Request
-
----
-
-## 📝 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
 
 ---
 
