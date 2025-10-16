@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const CTA = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-[15px]">
       <h5>Links:</h5>
       <ul className="flex flex-col gap-4">
         <Link href="https://github.com/FedeCodeLab" target="_blank">
