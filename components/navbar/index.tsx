@@ -2,19 +2,25 @@
 
 import Image from "next/image";
 import { useGithubStore } from "@/store/useGithubStore";
-import Link from "next/link";
 
 export const Navbar = () => {
-  const { query, setQuery, fetchUsers } = useGithubStore();
+  const { query, setQuery, fetchUsers, reset } = useGithubStore();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     fetchUsers();
   };
 
+  const handleReset = () => {
+    reset();
+  };
+
   return (
-    <nav className="border-b border-blue-highlight-light py-4 px-[2vw] flex justify-between">
-      <Link className="flex items-center gap-2.5" href={"/"}>
+    <nav className="border-b border-blue-highlight-light py-4 px-[2vw] flex justify-between items-center">
+      <div
+        onClick={handleReset}
+        className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+      >
         <Image
           src="/github-light.webp"
           height={30}
@@ -22,7 +28,7 @@ export const Navbar = () => {
           alt="Github Logo"
         />
         <h4 className="font-semibold text-light">Github Users Finder</h4>
-      </Link>
+      </div>
 
       <form onSubmit={handleSubmit} className="flex items-center gap-4">
         <input
