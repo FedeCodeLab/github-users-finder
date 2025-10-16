@@ -38,6 +38,7 @@ interface GithubStore {
   fetchUsers: () => Promise<void>;
   selectUser: (username: string) => Promise<void>;
   fetchRepos: (username: string) => Promise<void>;
+  reset: () => void;
 }
 
 export const useGithubStore = create<GithubStore>((set, get) => ({
@@ -90,4 +91,13 @@ export const useGithubStore = create<GithubStore>((set, get) => ({
       console.error("Error fetching repos:", err);
     }
   },
+
+  reset: () =>
+    set({
+      query: "",
+      lastQuery: "",
+      users: [],
+      selectedUser: null,
+      repos: [],
+    }),
 }));
