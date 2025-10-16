@@ -81,12 +81,6 @@ Abrí [http://localhost:3000](http://localhost:3000) para ver la aplicación.
 
 ---
 
-## 📸 Vista previa
-
-_Agregá aquí capturas de pantalla de tu aplicación_
-
----
-
 ## 🔧 Scripts disponibles
 ```bash
 npm run dev      # Inicia el servidor de desarrollo
