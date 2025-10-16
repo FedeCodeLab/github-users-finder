@@ -118,9 +118,9 @@ npm run lint     # Ejecuta el linter
 **Federico Guzmán**  
 _Desarrollador Frontend | Next.js • React • TypeScript • Tailwind CSS_
 
-🌐 [Portfolio](https://tu-portfolio.com)  
+🌐 [Portfolio](https://fedecodelab.vercel.app)  
 🐙 [GitHub](https://github.com/FedeCodeLab)  
-💼 [LinkedIn](https://linkedin.com/in/tu-perfil)
+💼 [LinkedIn](https://www.linkedin.com/in/federico-guzman)
 
 ---
 
